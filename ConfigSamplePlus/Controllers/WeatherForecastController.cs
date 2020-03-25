@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
 namespace ConfigSamplePlus.Controllers
 {
@@ -11,21 +10,17 @@ namespace ConfigSamplePlus.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private readonly IOptions<MyConfig> _config;
+        private readonly MyService _service;
 
-        public WeatherForecastController(IOptionsSnapshot<MyConfig> config)
+        public WeatherForecastController(MyService service)
         {
-            _config = config;
+            _service = service;
         }
 
         [HttpGet]
         public MyResponse Get()
         {
-            return new MyResponse
-            {
-                Id = _config.Value.Id,
-                Name = _config.Value.Name
-            };
+            return _service.Get();
         }
     }
 }
