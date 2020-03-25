@@ -13,7 +13,7 @@ namespace ConfigSamplePlus.Controllers
     {
         private readonly IOptions<MyConfig> _config;
 
-        public WeatherForecastController(IOptions<MyConfig> config)
+        public WeatherForecastController(IOptionsSnapshot<MyConfig> config)
         {
             _config = config;
         }
