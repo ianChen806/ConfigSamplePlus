@@ -28,7 +28,7 @@ namespace ConfigSamplePlus
         {
             services.AddControllers();
 
-            services.AddScoped<MyService>();
+            services.AddSingleton<MyService>();
             services.Configure<MyConfig>(Configuration.GetSection("Test"));
         }
 
